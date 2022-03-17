@@ -2,8 +2,10 @@ import React from "react";
 
 const Welcome = () => {
   return (
-    <div>
-      <h1>Hmm you are verified</h1>
+    <div className="bg-warning p-5">
+      <h1 className="text-center text-success mt-5">
+        Congratulation! Successfully Logged in!
+      </h1>
     </div>
   );
 };

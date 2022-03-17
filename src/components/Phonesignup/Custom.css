@@ -1,0 +1,13 @@
+.textnow {
+  background-color: #fbab7e;
+  background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
+  border-radius: 55px;
+}
+.tt {
+  font-family: var(--lobster-font);
+  font-weight: 500;
+  font-size: 3em;
+  background: -webkit-linear-gradient(rgb(255, 88, 17), rgb(213, 97, 65));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

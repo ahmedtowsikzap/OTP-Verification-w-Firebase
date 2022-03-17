@@ -5,6 +5,7 @@ import { Alert, Button, Form } from "react-bootstrap";
 import useFirebase from "../../Firebase/useFirebase";
 import { async } from "@firebase/util";
 import { useNavigate } from "react-router-dom";
+import "./Custom.css";
 
 const OtpSignup = () => {
   const [number, setNumber] = useState("");
@@ -40,51 +41,52 @@ const OtpSignup = () => {
       await confirmObj.confirm(otp);
       navigate("/welcome");
     } catch (err) {
-      setError(err.message);
+      setError("Invalid Code. check your OTP again!");
     }
   };
 
   return (
     <>
-      <div className="p-4 box">
-        <h2 className="mb-3">Login with Firebase OTP</h2>
-        {error && <Alert variant="danger">{error}</Alert>}
-        <Form onSubmit={getOtp} style={{ display: !flag ? "block" : "none" }}>
-          <Form.Group className="mb-3" controlId="formBasicPhoneNumber">
-            <PhoneInput
-              defaultCountry="BD"
-              value={number}
-              onChange={setNumber}
-              placeholder="Please Enter Your Phone Number"
-            />
-            <div className="mt-5" id="recaptcha-container" />
-          </Form.Group>
-          <div>
-            <Button variant="danger">Cancel</Button> &nbsp;
-            <Button variant="primary" type="submit">
-              Send OTP
-            </Button>
-          </div>
-        </Form>
-        <Form
-          className="mt-5"
-          onSubmit={verifyOtp}
-          style={{ display: flag ? "block" : "none" }}
-        >
-          <Form.Group className="mb-3" controlId="formBasicotp">
-            <Form.Control
-              type="otp"
-              placeholder="Enter otp"
-              onChange={(e) => setOtp(e.target.value)}
-            />
-          </Form.Group>
-          <div>
-            <Button variant="danger">Cancel</Button> &nbsp;
-            <Button variant="primary" type="submit">
-              Verify OTP
-            </Button>
-          </div>
-        </Form>
+      <div className="my-5 pt-5 mx-5 textnow">
+        <div className="p-4 box">
+          <h1 className="mb-5 tt">Login with OTP</h1>
+          {error && <Alert variant="danger">{error}</Alert>}
+          <Form onSubmit={getOtp} style={{ display: !flag ? "block" : "none" }}>
+            <Form.Group className="mb-3" controlId="formBasicPhoneNumber">
+              <PhoneInput
+                className="w-50"
+                defaultCountry="BD"
+                value={number}
+                onChange={setNumber}
+                placeholder="Please Enter Your Phone Number"
+              />
+              <div className="mt-5" id="recaptcha-container" />
+            </Form.Group>
+            <div>
+              <Button variant="danger" type="submit">
+                Send OTP!
+              </Button>
+            </div>
+          </Form>
+          <Form
+            className="mt-5"
+            onSubmit={verifyOtp}
+            style={{ display: flag ? "block" : "none" }}
+          >
+            <Form.Group className="mb-3" controlId="formBasicotp">
+              <Form.Control
+                type="otp"
+                placeholder="Enter otp"
+                onChange={(e) => setOtp(e.target.value)}
+              />
+            </Form.Group>
+            <div>
+              <Button variant="warning" type="submit">
+                Verify OTP
+              </Button>
+            </div>
+          </Form>
+        </div>
       </div>
     </>
   );
