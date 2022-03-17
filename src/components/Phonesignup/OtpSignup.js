@@ -5,6 +5,7 @@ import { Alert, Button, Form } from "react-bootstrap";
 import useFirebase from "../../Firebase/useFirebase";
 import { async } from "@firebase/util";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 import "./Custom.css";
 
 const OtpSignup = () => {
@@ -47,9 +48,21 @@ const OtpSignup = () => {
 
   return (
     <>
-      <div className="my-5 pt-5 mx-5 textnow">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.7, duration: 1 }}
+        className="my-5 pt-5 mx-5 textnow"
+      >
         <div className="p-4 box">
-          <h1 className="mb-5 tt">Login with OTP</h1>
+          <motion.h1
+            initial={{ x: "-100vw" }}
+            animate={{ x: 0 }}
+            transition={{ type: "spring", stiffness: 120, delay: 2.4 }}
+            className="mb-5 tt"
+          >
+            Login with OTP
+          </motion.h1>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={getOtp} style={{ display: !flag ? "block" : "none" }}>
             <Form.Group className="mb-3" controlId="formBasicPhoneNumber">
@@ -62,11 +75,15 @@ const OtpSignup = () => {
               />
               <div className="mt-5" id="recaptcha-container" />
             </Form.Group>
-            <div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 3, duration: 1.3 }}
+            >
               <Button variant="danger" type="submit">
                 Send OTP!
               </Button>
-            </div>
+            </motion.div>
           </Form>
           <Form
             className="mt-5"
@@ -76,18 +93,22 @@ const OtpSignup = () => {
             <Form.Group className="mb-3" controlId="formBasicotp">
               <Form.Control
                 type="otp"
-                placeholder="Enter otp"
+                placeholder="Enter the one time password"
                 onChange={(e) => setOtp(e.target.value)}
               />
             </Form.Group>
-            <div>
+            <motion.div
+              initial={{ x: "-100vw" }}
+              animate={{ x: 0 }}
+              transition={{ type: "spring", stiffness: 120, delay: 0.5 }}
+            >
               <Button variant="warning" type="submit">
-                Verify OTP
+                Verify OTP!
               </Button>
-            </div>
+            </motion.div>
           </Form>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };
