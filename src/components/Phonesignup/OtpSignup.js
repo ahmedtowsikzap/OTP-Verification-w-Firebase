@@ -68,7 +68,7 @@ const OtpSignup = () => {
             <Form.Group className="mb-3" controlId="formBasicPhoneNumber">
               <PhoneInput
                 className="w-50"
-                defaultCountry="BD"
+                defaultCountry="GB"
                 value={number}
                 onChange={setNumber}
                 placeholder="Please Enter Your Phone Number"
